@@ -7,6 +7,16 @@ plugins {
     id 'com.google.devtools.ksp' version '1.6.10-1.0.2'
 }
 
+kotlin {
+    sourceSets {
+        debug {
+            kotlin.srcDir("build/generated/ksp/debug/kotlin")
+        }
+        release {
+            kotlin.srcDir("build/generated/ksp/release/kotlin")
+        }
+    }
+}
 
 android {
     compileSdk 32
@@ -31,6 +41,7 @@ android {
         }
     }
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
