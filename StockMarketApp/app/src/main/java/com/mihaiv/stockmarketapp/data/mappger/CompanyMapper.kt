@@ -1,6 +1,8 @@
 package com.mihaiv.stockmarketapp.data.mappger
 
 import com.mihaiv.stockmarketapp.data.local.CompanyListingEntity
+import com.mihaiv.stockmarketapp.data.remote.dto.CompanyInfoDto
+import com.mihaiv.stockmarketapp.domain.model.CompanyInfo
 import com.mihaiv.stockmarketapp.domain.model.CompanyListing
 
 fun CompanyListingEntity.toCompanyListing(): CompanyListing {
@@ -9,4 +11,14 @@ fun CompanyListingEntity.toCompanyListing(): CompanyListing {
 
 fun CompanyListing.toCompanyListingEntity(): CompanyListingEntity {
     return CompanyListingEntity (name = name, symbol = symbol, exchange = exchange)
+}
+
+fun CompanyInfoDto.toCompanyInfo(): CompanyInfo {
+    return CompanyInfo(
+        symbol = symbol ?: "",
+        description = description ?: "",
+        name = name ?: "",
+        country = country ?: "",
+        industry = industry ?: ""
+    )
 }
